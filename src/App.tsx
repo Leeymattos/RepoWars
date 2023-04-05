@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useRepos } from "./hooks"
 import "./app.css"
+import { Game } from "./components";
 
 function App() {
   const [showGame, setShowGame] = useState<boolean>(false);
@@ -29,12 +30,11 @@ function App() {
         </>
       )}
       {
-        showGame && (
-          <>
-            <h1>Game</h1>
-          </>
-        )
-      }
+        showGame && <Game
+          repoState={[repos, setRepos]}
+          originalList={allRepos}
+          setShowGame={setShowGame}
+        />}
     </main>
   )
 }
