@@ -1,7 +1,7 @@
 import { truncate } from "../utils"
 import { BsBook } from 'react-icons/bs'
 import { TbPageBreak } from 'react-icons/tb'
-import { VscComment, VscCommentDiscussion, VscIssues, VscProject } from 'react-icons/vsc'
+import { VscCommentDiscussion, VscIssues, VscProject } from 'react-icons/vsc'
 import "./repo-card.css"
 import { FaCodeBranch, FaDownload } from "react-icons/fa"
 
@@ -27,10 +27,6 @@ export default function RepoCard({ content, handler }: RepoCardProps) {
             className="avatar"
           />
           <ul className="stats">
-
-            <li className="item">
-              <p>{content.stargazere_count}</p>
-            </li>
 
             <li className="item">
               {content.forks_count}

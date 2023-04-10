@@ -58,7 +58,7 @@ export default function Game({ repoState, originalList, setShowGame }: GameProps
 
   const handleChoice = (repo: Repo) => {
     const chosenRepo = repo.id == repo1?.id ? repo1 : repo2
-    const winner = repo1?.stargazere_count! > repo2?.stargazere_count! ? repo1 : repo2
+    const winner = repo1?.stargazers_count! > repo2?.stargazers_count! ? repo1 : repo2
 
     if (chosenRepo?.id === winner?.id) {
       setCorrect(prev => prev + 1)
@@ -70,33 +70,48 @@ export default function Game({ repoState, originalList, setShowGame }: GameProps
 
   return (
     <div className="game">
-      {over ? (<div className="score" > </div>) : (
-        repo1 && repo2 && (
-          <div className="repos">
-            <h1 className="title">Choose the Repo with most Stars</h1>
-            <div className="container">
-              <RepoCard content={repo1} handler={handleChoice} />
-
-              <div className="dashboard">
-                <div className="result corret">
-                  <p>{correct}</p>
-                  <FaCheckCircle />
-                </div>
-
-                <FaExchangeAlt className="icon-versus" />
-
-                <div className="result wrong">
-                  <p>{wrong}</p>
-                  <FaTimesCircle />
-                </div>
-              </div>
-
-              <RepoCard content={repo2} handler={handleChoice} />
+      {over ? (
+        <div className="score" >
+          <h1 className='title'>Congratulations, you did it!</h1>
+          <div className='container'>
+            <p className='text'>Final Score:</p>
+            <div className='result correct'>
+              <p>{correct}</p>
+              <FaCheckCircle />
+            </div>
+            <div className='result wrong'>
+              <p>{wrong}</p>
+              <FaTimesCircle />
             </div>
           </div>
-        )
+        </div>)
+        : (
+          repo1 && repo2 && (
+            <div className="repos">
+              <h1 className="title">Choose the Repo with most Stars</h1>
+              <div className="container">
+                <RepoCard content={repo1} handler={handleChoice} />
 
-      )}
+                <div className="dashboard">
+                  <div className="result corret">
+                    <p>{correct}</p>
+                    <FaCheckCircle />
+                  </div>
+
+                  <FaExchangeAlt className="icon-versus" />
+
+                  <div className="result wrong">
+                    <p>{wrong}</p>
+                    <FaTimesCircle />
+                  </div>
+                </div>
+
+                <RepoCard content={repo2} handler={handleChoice} />
+              </div>
+            </div>
+          )
+
+        )}
 
       <div className="buttons">
         <button
