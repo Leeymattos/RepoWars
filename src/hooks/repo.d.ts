@@ -4,6 +4,7 @@ interface Repo {
   description: string
   full_name: string
   stargazere_count: number
+  forks_count: number
   topics: string[]
   owner: {
     avatar_url: string

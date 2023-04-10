@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react"
+import { FaExchangeAlt } from "react-icons/fa"
+import './game.css'
+import RepoCard from './RepoCard'
 
 interface GameProps {
   repoState: [Repo[], React.Dispatch<React.SetStateAction<Repo[]>>]
@@ -11,11 +14,14 @@ export default function Game({ repoState, originalList, setShowGame }: GameProps
   const [over, setOver] = useState(false)
   const [repo1, setRepo1] = useState<Repo | null>(null)
   const [repo2, setRepo2] = useState<Repo | null>(null)
+
   useEffect((
   ) => {
     setRepo1(originalList[0])
     setRepo2(originalList[1])
   }, [])
+
+  const handleChoice = (repo: Repo) => { }
   return (
     <div className="game">
       {over ? (<div className="score" > </div>) : (
@@ -23,15 +29,11 @@ export default function Game({ repoState, originalList, setShowGame }: GameProps
           <div className="repos">
             <h1 className="title">Choose the Repo with most Stars</h1>
             <div className="container">
-              <div>
-                <h1>{repo1.name} - {repo1.full_name}</h1>
-              </div>
+              <RepoCard content={repo1} handler={handleChoice} />
               <div className="dashboard">
-                Versus
+                <FaExchangeAlt className="icon-versus" />
               </div>
-              <div>
-                <h1>{repo2.name} - {repo2.full_name}</h1>
-              </div>
+              <RepoCard content={repo2} handler={handleChoice} />
             </div>
           </div>
         )
@@ -41,12 +43,19 @@ export default function Game({ repoState, originalList, setShowGame }: GameProps
       <div className="buttons">
         <button
           type="submit"
-          className="button gradient"
-          onClick={() => setShowGame(false)}>Back</button>
-        <button
-          type="submit"
-          className="button gradient"
-          onClick={() => setShowGame(false)}>Next</button>
+          className="button gradient alternate"
+          onClick={() => setShowGame(false)}>
+          {over ? "Play Again" : "Back"}
+        </button>
+        {!over && (
+          <button
+            type="submit"
+            className="button gradient"
+            onClick={() => setShowGame(false)}>
+            Skip
+          </button>
+        )}
+
       </div>
     </div>
   )
