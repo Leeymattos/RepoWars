@@ -11,7 +11,6 @@ interface GameProps {
 
 export default function Game({ repoState, originalList, setShowGame }: GameProps) {
 
-
   const [repositories, setRepositories] = repoState
   const [over, setOver] = useState(false)
   const [repo1, setRepo1] = useState<Repo | null>(null)
