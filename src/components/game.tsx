@@ -9,9 +9,11 @@ interface GameProps {
   setShowGame: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-
-const Game: React.FC<GameProps> = ({ repoState, originalList, setShowGame }) => {
-
+const Game: React.FC<GameProps> = ({
+  repoState,
+  originalList,
+  setShowGame
+}) => {
   const [repositories, setRepositories] = repoState
   const [over, setOver] = useState(false)
   const [repo1, setRepo1] = useState<Repo | null>(null)

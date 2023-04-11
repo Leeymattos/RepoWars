@@ -10,7 +10,7 @@ interface RepoCardProps {
   handler: (repo: Repo) => void
 }
 
-export default function RepoCard({ content, handler }: RepoCardProps) {
+const RepoCard: React.FC<RepoCardProps> = ({ content, handler }: RepoCardProps) => {
   return (
     <div className="repo" onClick={() => handler(content)}>
       <div className="header">
@@ -73,3 +73,5 @@ export default function RepoCard({ content, handler }: RepoCardProps) {
     </div>
   )
 }
+
+export default RepoCard
