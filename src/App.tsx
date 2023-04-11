@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useRepos } from "./hooks"
-import "./app.css"
 import { Game } from "./components";
+import "./app.css"
 
 function App() {
   const [showGame, setShowGame] = useState<boolean>(false);

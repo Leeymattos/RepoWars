@@ -9,7 +9,8 @@ interface GameProps {
   setShowGame: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Game({ repoState, originalList, setShowGame }: GameProps) {
+
+const Game = ({ repoState, originalList, setShowGame }: GameProps) => {
 
   const [repositories, setRepositories] = repoState
   const [over, setOver] = useState(false)
@@ -132,3 +133,4 @@ export default function Game({ repoState, originalList, setShowGame }: GameProps
     </div>
   )
 }
+export default Game
