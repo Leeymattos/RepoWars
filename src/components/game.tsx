@@ -10,7 +10,7 @@ interface GameProps {
 }
 
 
-const Game = ({ repoState, originalList, setShowGame }: GameProps) => {
+const Game: React.FC<GameProps> = ({ repoState, originalList, setShowGame }) => {
 
   const [repositories, setRepositories] = repoState
   const [over, setOver] = useState(false)
